@@ -1,7 +1,15 @@
 import os
 import hashlib
 import json
+import configparser
 
+# Function to read the configuration file and return the config object
+def read_config(file_path):
+    config = configparser.ConfigParser()
+    config.read(file_path)
+    return config
+
+# Function to generate a hash for a file using SHA-256
 def generate_hash(file_path):
     hash = hashlib.sha256()
     with open(file_path, "rb") as f:
@@ -9,9 +17,7 @@ def generate_hash(file_path):
             hash.update(byte_block)
     return hash.hexdigest()
 
-import os
-import json
-
+# Function to generate a manifest file for the game
 def generate_manifest(local_game_directory, version, release_date, base_url):
     manifest_files = []
     for root, dirs, files in os.walk(local_game_directory):

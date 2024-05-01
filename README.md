@@ -1,2 +1,1 @@
 # Avalore-Manifest-Generator
- 
