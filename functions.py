@@ -18,7 +18,7 @@ def generate_hash(file_path):
     return hash.hexdigest()
 
 # Function to generate a manifest file for the game
-def generate_manifest(local_game_directory, version, release_date, base_url):
+def generate_manifest(local_game_directory, game_name, version, release_date, base_url):
     manifest_files = []
     for root, dirs, files in os.walk(local_game_directory):
         for filename in files:
@@ -33,7 +33,7 @@ def generate_manifest(local_game_directory, version, release_date, base_url):
             })
 
     manifest = {
-        "game_name": "Avalore",
+        "game_name": game_name,
         "version": version,
         "release_date": release_date,
         "files": manifest_files
